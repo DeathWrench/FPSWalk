@@ -222,6 +222,12 @@ void update()
                 movementState = 2;
             }
 
+            // Check and revert from sprint to run if the player has stopped sprinting
+            if (movementState == 2 && !IS_PED_SPRINTING(playerPed))
+            {
+                movementState = 1; // Revert to Running
+            }
+
             // Reset the sprint start time when the button is released
             sprintStartTime = 0;
         }
